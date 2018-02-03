@@ -1,5 +1,5 @@
 <div class="row top-margin">
-  <div class="col s12 m6 offset-m3">
+  <div class="col s12 m8 l6 offset-m2 offset-l3">
     <div class="card">
       <div class="card-content">
         <span class="card-title">Login</span>
@@ -22,13 +22,14 @@
               Password must have {{minPasswordLength}} characters
             </span>
           </div>
-          <button class="btn waves-effect waves-light" [class.disabled]="logInForm.checkValidity || isLoading"
+          <button class="btn waves-effect waves-light primary-color"
+                  [class.disabled]="logInForm.form.invalid || isLoading"
                   type="submit"
-                  name="action">{{ isLoading ? 'Loaging...' : 'LogIn' }}
-            <i class="material-icons right">send</i>
+                  name="action">{{ isLoading ? 'Loading...' : 'Log In' }}
           </button>
         </form>
-        <div>No account yet? Register <a>here</a>.</div>
+        <div class="top-margin"><p>No account yet? Register <a class="links-inline" [routerLink]="'/sign-in'">here</a>.
+        </p></div>
       </div>
     </div>
   </div>

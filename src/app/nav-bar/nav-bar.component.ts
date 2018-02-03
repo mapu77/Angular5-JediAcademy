@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from '../_shared/services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,5 +7,19 @@ import {Component} from '@angular/core';
   styleUrls: ['./nav-bar.component.less']
 })
 export class NavBarComponent {
+  email: string;
 
+  constructor(private authService: AuthService) {
+  }
+
+
+  isLogged(): boolean {
+    return this.authService.isLogged();
+  }
+
+  getEmail() {
+    if (this.isLogged()) {
+      this.email = this.authService.decodeEmail();
+    }
+  }
 }

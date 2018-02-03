@@ -4,27 +4,32 @@ import {Router} from '@angular/router';
 import {AuthService} from '../_shared/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.less']
 })
-export class LoginComponent {
+export class SignInComponent {
   readonly minPasswordLength = 6;
-
   user: User = new User();
   isLoading = false;
+  repeat: string;
 
   constructor(private _authService: AuthService, private _router: Router) {
   }
 
-  onLogin() {
+  onSignIn() {
     this.isLoading = true;
     this._authService
-      .logIn(this.user)
+      .signIn(this.user)
       .then(response => {
         this.isLoading = false;
         console.log(response);
         this._router.navigateByUrl('decks');
-      }).catch(e => console.log(e));
+      })
+      .catch();
+  }
+
+  passwordMatch() {
+    return this.user.password === this.repeat;
   }
 }

@@ -1,11 +1,12 @@
 <div class="navbar-fixed">
   <nav class="container primary-color">
     <div class="nav-wrapper">
-      <a href="#" class="logo-center brand-logo left"><h3>🂾 Jedi Cards</h3></a>
-      <ul id="nav-mobile" class="right hide-on-small-and-down">
-        <li><a href="#">Decks</a></li>
+      <a [routerLink]="'/login'" class="logo-center brand-logo left"><h3>🂾 Jedi Cards</h3></a>
+      <ul id="nav-mobile" class="right hide-on-small-and-down" *ngIf="!isLogged()">
+        <li><span>Hi {{email}}!</span></li>
+        <li><a [routerLink]="'/decks'">Decks</a></li>
         <li><a href="#">Cards</a></li>
-        <li><a href="#">Log out</a></li>
+        <li><a (click)="logOut()">Log out</a></li>
       </ul>
     </div>
   </nav>
