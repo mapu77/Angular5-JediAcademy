@@ -1,0 +1,23 @@
+<div>
+  <div class="row container">
+    <div class="col l6 s12">
+      <h5 class="white-text">{{aboutProject.title}}</h5>
+      <p class="white-text">{{aboutProject.subtitle}}</p>
+      <p class="grey-text text-lighten-4">{{aboutProject.description}}</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">{{aboutAuthor.getFullName()}}</h5>
+      <h6 class="white-text">{{aboutAuthor.biography}}</h6>
+      <ul class="links-inline">
+        <li *ngFor="let link of aboutAuthor.links">
+          <a class="grey-text text-lighten-3" [href]="link.url">{{link.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      <p class="right">© 2014 Copyright Text</p>
+    </div>
+  </div>
+</div>

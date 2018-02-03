@@ -1,0 +1,35 @@
+<div class="row top-margin">
+  <div class="col s12 m6 offset-m3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Login</span>
+        <form #logInForm="ngForm" (ngSubmit)="onLogin()">
+          <div class="input-field">
+            <label for="username">Email</label>
+            <input id="username" name="username" type="email" required
+                   [(ngModel)]="user.email"
+                   #username="ngModel">
+            <span class="helper-text red-text" *ngIf="username.invalid && username.dirty">
+              This field is required
+            </span>
+          </div>
+          <div class="input-field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required
+                   [(ngModel)]="user.password"
+                   #password="ngModel" [minlength]="minPasswordLength">
+            <span class="helper-text red-text" *ngIf="password.invalid && password.dirty">
+              Password must have {{minPasswordLength}} characters
+            </span>
+          </div>
+          <button class="btn waves-effect waves-light" [class.disabled]="logInForm.checkValidity || isLoading"
+                  type="submit"
+                  name="action">{{ isLoading ? 'Loaging...' : 'LogIn' }}
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+        <div>No account yet? Register <a>here</a>.</div>
+      </div>
+    </div>
+  </div>
+</div>
